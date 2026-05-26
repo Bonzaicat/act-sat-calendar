@@ -24,10 +24,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
-      - name: Generate ICS files
-        run: |
-          cd scraper
-          python fetch_sat_act.py
+- name: Generate ICS files
+  run: |
+    export PYTHONPATH=$PYTHONPATH:$(pwd)/scraper
+    python scraper/fetch_sat_act.py
+
 
       - name: Commit and push changes
         run: |
